@@ -5,6 +5,8 @@ date: "2/11/2018"
 output: html_document
 ---
 
+<h2>Welcome Hockey fans!!</h2>
+
 For my project, I chose to create an interactive map that lists all the NHL arenas.
 
 Each arena is identified with a marker of the team logo and includes the name, coordinates, team name, and arena capacity.
@@ -32,43 +34,43 @@ nhl.data <- data.frame(arena, capacity, team, lat, lng)
 #nhl.data
 
 iconSet = iconList(
-  leafs = makeIcon("img/leafs.png", iconWidth=24, iconHeight=24),
-  lightning = makeIcon("img/lightning.png", iconWidth=24, iconHeight=24),
-  stars = makeIcon("img/stars.png", iconWidth=24, iconHeight=24),
-  panthers = makeIcon("img/panthers.png", iconWidth=24, iconHeight=24),
-  islanders = makeIcon("img/islanders.png", iconWidth=24, iconHeight=24),
-  canadiens = makeIcon("img/canadiens.png", iconWidth=24, iconHeight=24),
-  jets = makeIcon("img/jets.png", iconWidth=24, iconHeight=24),
-  predators = makeIcon("img/predators.png", iconWidth=24, iconHeight=24),
-  senators = makeIcon("img/senators.png", iconWidth=24, iconHeight=24),
-  capitals = makeIcon("img/capitals.png", iconWidth=24, iconHeight=24),
-  coyotes = makeIcon("img/coyotes.png", iconWidth=24, iconHeight=24),
-  ducks = makeIcon("img/ducks.png", iconWidth=24, iconHeight=24),
-  sabres = makeIcon("img/sabres.png", iconWidth=24, iconHeight=24),
-  redwings = makeIcon("img/redwings.png", iconWidth=24, iconHeight=24),
-  rangers = makeIcon("img/rangers.png", iconWidth=24, iconHeight=24),
-  bluejackets = makeIcon("img/bluejackets.png", iconWidth=24, iconHeight=24),
-  avalanche = makeIcon("img/avalanche.png", iconWidth=24, iconHeight=24),
-  hurricanes = makeIcon("img/hurricanes.png", iconWidth=24, iconHeight=24),
-  penguins = makeIcon("img/penguins.png", iconWidth=24, iconHeight=24),
-  devils = makeIcon("img/devils.png", iconWidth=24, iconHeight=24),
-  canucks = makeIcon("img/canucks.png", iconWidth=24, iconHeight=24),
-  oilers = makeIcon("img/oilers.png", iconWidth=24, iconHeight=24),
-  flames = makeIcon("img/flames.png", iconWidth=24, iconHeight=24),
-  sharks = makeIcon("img/sharks.png", iconWidth=24, iconHeight=24),
-  blues = makeIcon("img/blues.png", iconWidth=24, iconHeight=24),
-  kings = makeIcon("img/kings.png", iconWidth=24, iconHeight=24),
-  bruins = makeIcon("img/bruins.png", iconWidth=24, iconHeight=24),
-  knights = makeIcon("img/knights.png", iconWidth=24, iconHeight=24),
-  blackhawks = makeIcon("img/blackhawks.png", iconWidth=24, iconHeight=24),
-  flyers = makeIcon("img/flyers.png", iconWidth=24, iconHeight=24),
-  wild = makeIcon("img/wild.png", iconWidth=24, iconHeight=24)
+  leafs = makeIcon("img/leafs.png", iconWidth=32, iconHeight=32),
+  lightning = makeIcon("img/lightning.png", iconWidth=32, iconHeight=32),
+  stars = makeIcon("img/stars.png", iconWidth=32, iconHeight=32),
+  panthers = makeIcon("img/panthers.png", iconWidth=32, iconHeight=32),
+  islanders = makeIcon("img/islanders.png", iconWidth=32, iconHeight=32),
+  canadiens = makeIcon("img/canadiens.png", iconWidth=32, iconHeight=32),
+  jets = makeIcon("img/jets.png", iconWidth=32, iconHeight=32),
+  predators = makeIcon("img/predators.png", iconWidth=32, iconHeight=32),
+  senators = makeIcon("img/senators.png", iconWidth=32, iconHeight=32),
+  capitals = makeIcon("img/capitals.png", iconWidth=32, iconHeight=32),
+  coyotes = makeIcon("img/coyotes.png", iconWidth=32, iconHeight=32),
+  ducks = makeIcon("img/ducks.png", iconWidth=32, iconHeight=32),
+  sabres = makeIcon("img/sabres.png", iconWidth=32, iconHeight=32),
+  redwings = makeIcon("img/redwings.png", iconWidth=32, iconHeight=32),
+  rangers = makeIcon("img/rangers.png", iconWidth=32, iconHeight=32),
+  bluejackets = makeIcon("img/bluejackets.png", iconWidth=32, iconHeight=32),
+  avalanche = makeIcon("img/avalanche.png", iconWidth=32, iconHeight=32),
+  hurricanes = makeIcon("img/hurricanes.png", iconWidth=32, iconHeight=32),
+  penguins = makeIcon("img/penguins.png", iconWidth=32, iconHeight=32),
+  devils = makeIcon("img/devils.png", iconWidth=32, iconHeight=32),
+  canucks = makeIcon("img/canucks.png", iconWidth=32, iconHeight=32),
+  oilers = makeIcon("img/oilers.png", iconWidth=32, iconHeight=32),
+  flames = makeIcon("img/flames.png", iconWidth=32, iconHeight=32),
+  sharks = makeIcon("img/sharks.png", iconWidth=32, iconHeight=32),
+  blues = makeIcon("img/blues.png", iconWidth=32, iconHeight=32),
+  kings = makeIcon("img/kings.png", iconWidth=32, iconHeight=32),
+  bruins = makeIcon("img/bruins.png", iconWidth=32, iconHeight=32),
+  knights = makeIcon("img/knights.png", iconWidth=32, iconHeight=32),
+  blackhawks = makeIcon("img/blackhawks.png", iconWidth=32, iconHeight=32),
+  flyers = makeIcon("img/flyers.png", iconWidth=32, iconHeight=32),
+  wild = makeIcon("img/wild.png", iconWidth=32, iconHeight=32)
   )
 
 #iconSet[c('leafs', 'lightning', 'stars', 'panthers', 'islanders', 'canadiens', 'jets', 'predators', 'senators', 'capitals', 'coyotes', 'ducks', 'sabres', 'redwings', 'rangers', 'bluejackets', 'avalanche', 'hurricanes', 'penguins', 'devils', 'canucks', 'oilers', 'flames', 'sharks', 'blues', 'kings', 'bruins', 'knights', 'blackhawks', 'flyers', 'wild')]
 my_map <- leaflet() %>% 
   addTiles() %>%
-  addMarkers(nhl.data, lat=nhl.data$lat, lng=nhl.data$lng, icon = iconSet, popup = paste("Name:<b>", nhl.data$arena,"</b><br>Latitdue:", nhl.data$lat, "<br>Longitude", nhl.data$lng, "<br>Home of the <b>", nhl.data$team, "</b><br>Capacity:", nhl.data$capacity ))
+  addMarkers(nhl.data, lat=nhl.data$lat, lng=nhl.data$lng, icon = iconSet, popup = paste("Name:<b>", nhl.data$arena,"</b><br>Latitude:", nhl.data$lat, "<br>Longitude", nhl.data$lng, "<br>Home of the <b>", nhl.data$team, "</b><br>Capacity:", nhl.data$capacity ))
 
 my_map
 
