@@ -67,7 +67,7 @@ iconSet = iconList(
   )
 
 #iconSet[c('leafs', 'lightning', 'stars', 'panthers', 'islanders', 'canadiens', 'jets', 'predators', 'senators', 'capitals', 'coyotes', 'ducks', 'sabres', 'redwings', 'rangers', 'bluejackets', 'avalanche', 'hurricanes', 'penguins', 'devils', 'canucks', 'oilers', 'flames', 'sharks', 'blues', 'kings', 'bruins', 'knights', 'blackhawks', 'flyers', 'wild')]
-my_map <- leaflet() %>% 
+my_map <- leaflet(width="100%") %>% 
   addTiles() %>%
   addMarkers(nhl.data, lat=nhl.data$lat, lng=nhl.data$lng, icon = iconSet, popup = paste("Name:<b>", nhl.data$arena,"</b><br>Latitude:", nhl.data$lat, "<br>Longitude", nhl.data$lng, "<br>Home of the <b>", nhl.data$team, "</b><br>Capacity:", nhl.data$capacity ))
 
