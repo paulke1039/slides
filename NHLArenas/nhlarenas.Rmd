@@ -5,10 +5,10 @@ date: "2/11/2018"
 output: html_document
 ---
 
-<h2>Welcome Hockey fans!!</h2>
+<h3>Welcome Hockey fans!!</h3>
 
 For my project, I chose to create an interactive map that lists all the NHL arenas.
-Each arena is identified with a marker of the team logo and when clicked on, the name, coordinates, team name, and arena capacity will appear in a pop-up.
+Each arena is identified with a marker of the team logo and when clicked on, the name, coordinates, team name, and arena capacity will appear in a pop-up.  You can also zoom in and out to see the exact location of the arena.
 
 
 Source: Wikipedia. List of National Hockey League arenas<br> (https://en.wikipedia.org/wiki/List_of_National_Hockey_League_arenas)
