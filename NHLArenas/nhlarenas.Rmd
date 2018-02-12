@@ -1,0 +1,75 @@
+---
+title: "National Hockey League Arenas"
+author: "Paul Y. Ke"
+date: "2/11/2018"
+output: html_document
+---
+
+For my project, I chose to create an interactive map that lists all the NHL arenas.
+
+Each arena is identified with a marker of the team logo and includes the name, coordinates, team name, and arena capacity.
+
+
+Source: Wikipedia. List of National Hockey League arenas (https://en.wikipedia.org/wiki/List_of_National_Hockey_League_arenas)
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(leaflet)
+```
+```{r, echo=FALSE}
+
+arena <- c('Air Canada Cenre', 'Amalie Arena', 'American Airlines Center', 'BB&T Center', 'Barclays Center', 'Bell Center', 'Bell MTS Place', 'Bridgestone Arena', 'Canadian Tire Centre', 'Capital One Arena', 'Gila River Arena', 'Honda Center', 'KeyBank Center', 'Little Caesars Arena', 'Madison Square Garden', 'Nationwide Arena', 'Pepsi Center', 'PNC Arena', 'PPG Paints Arena', 'Prudential Center', 'Rogers Arena', 'Rogers Place', 'Scotiabank Saddledome', 'SAP Center', 'Scottrade Center', 'Staples Center', 'TD Garden', 'T-Mobile Arena', 'United Center', 'Wells Fargo Center', 'Xcel Energy Center')
+
+capacity <- c(18819, 19092, 18532, 19250, 15795, 21302, 15321, 17113, 17373, 18506, 17125, 17174, 19070, 19515, 18006, 18144, 17809, 18680, 18387, 16514, 18910, 18347, 19289, 17562, 18724, 18230, 17565, 17368, 19717, 19543, 17954)
+
+team <- c('Toronto Maple Leafs', 'Tampa Bay Lightning', 'Dallas Stars', 'Florida Panthers', 'New York Islanders', 'Montreal Canadiens', 'Winnipeg Jets', 'Nashville Predators', 'Ottawa Senators', 'Washington Capitals', 'Arizona Coyotes', 'Anaheim Ducks', 'Buffalo Sabres', 'Detroit Red Wings', 'New York Rangers', 'Columbus Blue Jackets', 'Colorado Avalanche', 'Carolina Hurricanes', 'Pittsburgh Penguins', 'New Jersey Devils', 'Vancouver Canucks', 'Edmonton Oilers', 'Calgary Flames', 'San Jose Sharks', 'St. Louis Blues', 'Los Angeles Kings', 'Boston Bruins', 'Vegas Golden Knights', 'Chicago Blackhawks', 'Philadelphia Flyers', 'Minnesota Wild')
+
+lat <- c(43.643333, 27.942778, 32.790556, 26.158333, 40.68265, 45.496111, 49.892778, 36.159167, 45.296944, 38.898056, 33.531944, 33.807778, 42.875, 42.341172, 40.750556, 39.969283, 39.748611,
+35.803333, 40.439444, 40.733611, 49.277778, 53.546944, 51.0375, 37.332778,38.626667, 34.043056, 42.366303, 36.102778, 41.880556, 39.901111, 44.944722)
+
+lng <- c(-79.379167, -82.451944, -96.810278, -80.325556, -73.974689, -73.569444, -97.143611, -86.778611, -75.927222, -77.020833, -112.261111, -117.876667, -78.876389, -83.054911, -73.993611, -83.006111, -105.0075, -78.721944, -79.989167, -74.171111, -123.108889, -113.497778, -114.051944, -121.901111, -90.2025, -118.267222, -71.062228, -115.178333, -87.674167, -75.171944, -93.101111)
+
+nhl.data <- data.frame(arena, capacity, team, lat, lng)
+#nhl.data
+
+iconSet = iconList(
+  leafs = makeIcon("img/leafs.png", iconWidth=24, iconHeight=24),
+  lightning = makeIcon("img/lightning.png", iconWidth=24, iconHeight=24),
+  stars = makeIcon("img/stars.png", iconWidth=24, iconHeight=24),
+  panthers = makeIcon("img/panthers.png", iconWidth=24, iconHeight=24),
+  islanders = makeIcon("img/islanders.png", iconWidth=24, iconHeight=24),
+  canadiens = makeIcon("img/canadiens.png", iconWidth=24, iconHeight=24),
+  jets = makeIcon("img/jets.png", iconWidth=24, iconHeight=24),
+  predators = makeIcon("img/predators.png", iconWidth=24, iconHeight=24),
+  senators = makeIcon("img/senators.png", iconWidth=24, iconHeight=24),
+  capitals = makeIcon("img/capitals.png", iconWidth=24, iconHeight=24),
+  coyotes = makeIcon("img/coyotes.png", iconWidth=24, iconHeight=24),
+  ducks = makeIcon("img/ducks.png", iconWidth=24, iconHeight=24),
+  sabres = makeIcon("img/sabres.png", iconWidth=24, iconHeight=24),
+  redwings = makeIcon("img/redwings.png", iconWidth=24, iconHeight=24),
+  rangers = makeIcon("img/rangers.png", iconWidth=24, iconHeight=24),
+  bluejackets = makeIcon("img/bluejackets.png", iconWidth=24, iconHeight=24),
+  avalanche = makeIcon("img/avalanche.png", iconWidth=24, iconHeight=24),
+  hurricanes = makeIcon("img/hurricanes.png", iconWidth=24, iconHeight=24),
+  penguins = makeIcon("img/penguins.png", iconWidth=24, iconHeight=24),
+  devils = makeIcon("img/devils.png", iconWidth=24, iconHeight=24),
+  canucks = makeIcon("img/canucks.png", iconWidth=24, iconHeight=24),
+  oilers = makeIcon("img/oilers.png", iconWidth=24, iconHeight=24),
+  flames = makeIcon("img/flames.png", iconWidth=24, iconHeight=24),
+  sharks = makeIcon("img/sharks.png", iconWidth=24, iconHeight=24),
+  blues = makeIcon("img/blues.png", iconWidth=24, iconHeight=24),
+  kings = makeIcon("img/kings.png", iconWidth=24, iconHeight=24),
+  bruins = makeIcon("img/bruins.png", iconWidth=24, iconHeight=24),
+  knights = makeIcon("img/knights.png", iconWidth=24, iconHeight=24),
+  blackhawks = makeIcon("img/blackhawks.png", iconWidth=24, iconHeight=24),
+  flyers = makeIcon("img/flyers.png", iconWidth=24, iconHeight=24),
+  wild = makeIcon("img/wild.png", iconWidth=24, iconHeight=24)
+  )
+
+#iconSet[c('leafs', 'lightning', 'stars', 'panthers', 'islanders', 'canadiens', 'jets', 'predators', 'senators', 'capitals', 'coyotes', 'ducks', 'sabres', 'redwings', 'rangers', 'bluejackets', 'avalanche', 'hurricanes', 'penguins', 'devils', 'canucks', 'oilers', 'flames', 'sharks', 'blues', 'kings', 'bruins', 'knights', 'blackhawks', 'flyers', 'wild')]
+my_map <- leaflet() %>% 
+  addTiles() %>%
+  addMarkers(nhl.data, lat=nhl.data$lat, lng=nhl.data$lng, icon = iconSet, popup = paste("<b>", nhl.data$arena,"</b><br>Latitdue:", nhl.data$lat, "<br>Longitude", nhl.data$lng, "<br>Home of the <b>", nhl.data$team, "</b><br>Capacity:", nhl.data$capacity ))
+
+my_map
+
+```
