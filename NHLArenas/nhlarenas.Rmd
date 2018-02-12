@@ -10,7 +10,7 @@ For my project, I chose to create an interactive map that lists all the NHL aren
 Each arena is identified with a marker of the team logo and includes the name, coordinates, team name, and arena capacity.
 
 
-Source: Wikipedia. List of National Hockey League arenas (https://en.wikipedia.org/wiki/List_of_National_Hockey_League_arenas)
+Source: Wikipedia. List of National Hockey League arenas<br> (https://en.wikipedia.org/wiki/List_of_National_Hockey_League_arenas)
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 library(leaflet)
@@ -68,7 +68,7 @@ iconSet = iconList(
 #iconSet[c('leafs', 'lightning', 'stars', 'panthers', 'islanders', 'canadiens', 'jets', 'predators', 'senators', 'capitals', 'coyotes', 'ducks', 'sabres', 'redwings', 'rangers', 'bluejackets', 'avalanche', 'hurricanes', 'penguins', 'devils', 'canucks', 'oilers', 'flames', 'sharks', 'blues', 'kings', 'bruins', 'knights', 'blackhawks', 'flyers', 'wild')]
 my_map <- leaflet() %>% 
   addTiles() %>%
-  addMarkers(nhl.data, lat=nhl.data$lat, lng=nhl.data$lng, icon = iconSet, popup = paste("<b>", nhl.data$arena,"</b><br>Latitdue:", nhl.data$lat, "<br>Longitude", nhl.data$lng, "<br>Home of the <b>", nhl.data$team, "</b><br>Capacity:", nhl.data$capacity ))
+  addMarkers(nhl.data, lat=nhl.data$lat, lng=nhl.data$lng, icon = iconSet, popup = paste("Name:<b>", nhl.data$arena,"</b><br>Latitdue:", nhl.data$lat, "<br>Longitude", nhl.data$lng, "<br>Home of the <b>", nhl.data$team, "</b><br>Capacity:", nhl.data$capacity ))
 
 my_map
 
