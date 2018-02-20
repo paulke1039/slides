@@ -813,33 +813,73 @@ The source for the application and this presentation can be found on GitHub here
 <p>The dataset was built from data on Wikipedia:
 <a href="https://en.wikipedia.org/wiki/List_of_National_Hockey_League_arenas">https://en.wikipedia.org/wiki/List_of_National_Hockey_League_arenas</a></p>
 
-<pre><code class="r">summary(nhl.data)
+<pre><code class="r">show(nhl.data)
 </code></pre>
 
-<pre><code>     division                  team                         arena   
- atlantic:8   Anaheim Ducks      : 1   Air Canada Cenre        : 1  
- central :7   Arizona Coyotes    : 1   Amalie Arena            : 1  
- metro   :8   Boston Bruins      : 1   American Airlines Center: 1  
- pacific :8   Buffalo Sabres     : 1   Barclays Center         : 1  
-              Calgary Flames     : 1   BB&amp;T Center             : 1  
-              Carolina Hurricanes: 1   Bell Center             : 1  
-              (Other)            :25   (Other)                 :25  
-    capacity                           address          city   
- Min.   :15321   \t100 Legends Way          : 1   Anaheim : 1  
- 1st Qu.:17468   1 Panther Parkway          : 1   Boston  : 1  
- Median :18347   1 Seymour H. Knox III Plaza: 1   Brooklyn: 1  
- Mean   :18217   1000 Chopper Circle        : 1   Buffalo : 1  
- 3rd Qu.:18990   1000 Palladium Drive       : 1   Calgary : 1  
- Max.   :21302   1001 Fifth Avenue          : 1   Chicago : 1  
-                 (Other)                    :25   (Other) :25  
-          state   
- California  : 3  
- New York    : 3  
- Alberta     : 2  
- Florida     : 2  
- Ontario     : 2  
- Pennsylvania: 2  
- (Other)     :17  
+<pre><code>   division                  team                    arena capacity
+1  atlantic   Toronto Maple Leafs         Air Canada Cenre    18819
+2  atlantic   Tampa Bay Lightning             Amalie Arena    19092
+3   central          Dallas Stars American Airlines Center    18532
+4  atlantic      Florida Panthers              BB&amp;T Center    19250
+5     metro    New York Islanders          Barclays Center    15795
+6  atlantic    Montreal Canadiens              Bell Center    21302
+7   central         Winnipeg Jets           Bell MTS Place    15321
+8   central   Nashville Predators        Bridgestone Arena    17113
+9  atlantic       Ottawa Senators     Canadian Tire Centre    17373
+10    metro   Washington Capitals        Capital One Arena    18506
+11  pacific       Arizona Coyotes         Gila River Arena    17125
+12  pacific         Anaheim Ducks             Honda Center    17174
+13 atlantic        Buffalo Sabres           KeyBank Center    19070
+14 atlantic     Detroit Red Wings     Little Caesars Arena    19515
+15    metro      New York Rangers    Madison Square Garden    18006
+16    metro Columbus Blue Jackets         Nationwide Arena    18144
+17  central    Colorado Avalanche             Pepsi Center    17809
+18    metro   Carolina Hurricanes                PNC Arena    18680
+19    metro   Pittsburgh Penguins         PPG Paints Arena    18387
+20    metro     New Jersey Devils        Prudential Center    16514
+21  pacific     Vancouver Canucks             Rogers Arena    18910
+22  pacific       Edmonton Oilers             Rogers Place    18347
+23  pacific        Calgary Flames    Scotiabank Saddledome    19289
+24  pacific       San Jose Sharks               SAP Center    17562
+25  central       St. Louis Blues         Scottrade Center    18724
+26  pacific     Los Angeles Kings           Staples Center    18230
+27 atlantic         Boston Bruins                TD Garden    17565
+28  pacific  Vegas Golden Knights           T-Mobile Arena    17368
+29  central    Chicago Blackhawks            United Center    19717
+30    metro   Philadelphia Flyers       Wells Fargo Center    19543
+31  central        Minnesota Wild       Xcel Energy Center    17954
+                                  address         city            state
+1                           40 Bay Street      Toronto          Ontario
+2                   401 Channelside Drive        Tampa          Florida
+3                     2500 Victory Avenue       Dallas            Texas
+4                       1 Panther Parkway      Sunrise          Florida
+5                     620 Atlantic Avenue     Brooklyn         New York
+6  1909, avenue des Canadiens-de-Montréal     Montreal           Quebec
+7                      300 Portage Avenue     Winnipeg         Manitoba
+8                            501 Broadway    Nashville        Tennessee
+9                    1000 Palladium Drive       Ottawa          Ontario
+10                        601 F Street NW   Washington             D.C.
+11              9400 West Maryland Avenue     Glendale          Arizona
+12               2695 East Katella Avenue      Anaheim       California
+13            1 Seymour H. Knox III Plaza      Buffalo         New York
+14                   2645 Woodward Avenue      Detroit         Michigan
+15                   4 Pennsylvania Plaza     New York         New York
+16          200 West Nationwide Boulevard     Columbus             Ohio
+17                    1000 Chopper Circle       Denver         Colorado
+18                 1400 Edwards Mill Road      Raleigh   North Carolina
+19                      1001 Fifth Avenue   Pittsburgh     Pennsylvania
+20                    25 Lafayette Street       Newark       New Jersey
+21                      800 Griffiths Way    Vancouver British Columbia
+22                          104 Avenue NW     Edmonton          Alberta
+23                 555 Saddledome Rise SE      Calgary          Alberta
+24            525 West Santa Clara Street     San Jose       California
+25                      1401 Clark Avenue    St. Louis         Missouri
+26             1111 South Figueroa Street  Los Angeles       California
+27                      \t100 Legends Way       Boston    Massachusetts
+28         3780 South Las Vegas Boulevard     Paradise           Nevada
+29               1901 West Madison Street      Chicago         Illinois
+30                3601 South Broad Street Philadelphia     Pennsylvania
+31             199 Kellogg Boulevard West   Saint Paul        Minnesota
 </code></pre>
 
 </div>
